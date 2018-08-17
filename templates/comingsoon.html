@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>4-YOU</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="{{ url_for('static', filename='images/icons/favicon.ico') }}"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css') }}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='fonts/font-awesome-4.7.0/css/font-awesome.min.css') }}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='vendor/animate/animate.css') }}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='vendor/select2/select2.min.css') }}">
+	<link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet"> 
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css_comingsoon/util.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css_comingsoon/main.css') }}">
+	
+<!--===============================================================================================-->
+</head>
+<body>
+	
+	<!--  -->
+	<div class="simpleslide100">
+		<!-- <video src="{{ url_for('static', filename='videos/video_main.mp4') }}" -->
+		<!-- poster="{{ url_for('static', filename='main_bg.png') }}" autoplay muted></video> -->
+		<div class="simpleslide100-item bg-img1" style="background-image: url({{ url_for('static', filename='main_bg.png') }}); background-color: black;"></div>
+		<!-- <div class="simpleslide100-item bg-img1" style="background-image: url('images/bg02.jpg');"></div>
+		<div class="simpleslide100-item bg-img1" style="background-image: url('images/bg03.jpg');"></div> -->
+	</div>
+
+	<div class="size1 overlay1">
+		<div class="size1 flex-col-c-m p-l-15 p-r-15 p-t-50 p-b-50">
+			<h3 class="l1-txt1 txt-center p-b-25">
+				4-you Bientôt en ligne !
+			</h3>
+
+			<p class="m2-txt1 txt-center p-b-48">
+				Notre site est en construction. N'hésitez-pas à nous envoyer un e-mail à <a class='mail' href="mailTo:ismael.fr@hotmail.fr"><b>ismael.fr@hotmail.fr</b></a> !
+			</p>
+
+			<div class="flex-w flex-c-m cd100 p-b-33">
+				<div class="flex-col-c-m size2 bor1 m-l-15 m-r-15 m-b-20">
+					<span class="l2-txt1 p-b-9 days">35</span>
+					<span class="s2-txt1">Jours</span>
+				</div>
+
+				<div class="flex-col-c-m size2 bor1 m-l-15 m-r-15 m-b-20">
+					<span class="l2-txt1 p-b-9 hours">17</span>
+					<span class="s2-txt1">Heures</span>
+				</div>
+
+				<div class="flex-col-c-m size2 bor1 m-l-15 m-r-15 m-b-20">
+					<span class="l2-txt1 p-b-9 minutes">50</span>
+					<span class="s2-txt1">Minutes</span>
+				</div>
+
+				<div class="flex-col-c-m size2 bor1 m-l-15 m-r-15 m-b-20">
+					<span class="l2-txt1 p-b-9 seconds">39</span>
+					<span class="s2-txt1">Secondes</span>
+				</div>
+			</div>
+
+			<div class="container social">
+				<div class="row">
+					<div class="col-sm"></div>
+					<div class='col-sm'>
+						<a href="https://www.facebook.com/foryouforevr/">Facebook</a>
+					</div>
+					<div class='col-sm'>
+						<a href="https://www.youtube.com/channel/UCj6RXo3JvUjlquZxGdrW8DQ">Youtube</a>
+					</div>
+					<div class="col-sm"></div>
+				</div>
+			</div>
+			<!-- <form class="w-full flex-w flex-c-m validate-form">
+
+				<div class="wrap-input100 validate-input where1" data-validate = "Valid email is required: ex@abc.xyz">
+					<input class="input100 placeholder0 s2-txt2" type="text" name="email" placeholder="Enter Email Address">
+					<span class="focus-input100"></span>
+				</div>
+				
+				
+				<button class="flex-c-m size3 s2-txt3 how-btn1 trans-04 where1">
+					Subscribe
+				</button>
+			</form> -->
+		</div>
+	</div>
+
+
+
+	
+
+<!--===============================================================================================-->	
+	<script src="{{ url_for('static', filename='vendor/jquery/jquery-3.2.1.min.js') }}"></script>
+<!--===============================================================================================-->
+	<script src="{{ url_for('static', filename='vendor/bootstrap/js/popper.js') }}"></script>
+	<script src="{{ url_for('static', filename='vendor/bootstrap/js/bootstrap.min.js') }}"></script>
+<!--===============================================================================================-->
+	<script src="{{ url_for('static', filename='vendor/select2/select2.min.js') }}"></script>
+<!--===============================================================================================-->
+	<script src="{{ url_for('static', filename='vendor/countdowntime/moment.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='vendor/countdowntime/moment-timezone.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='vendor/countdowntime/moment-timezone-with-data.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='vendor/countdowntime/countdowntime.js') }}"></script>
+	<script>
+		$('.cd100').countdown100({
+			/*Set Endtime here*/
+			/*Endtime must be > current time*/
+			endtimeYear: 2018,
+			endtimeMonth: 8,
+			endtimeDate: 15,
+			endtimeHours: 8,
+			endtimeMinutes: 0,
+			endtimeSeconds: 0,
+			timeZone: "Europe/Paris" 
+			// ex:  timeZone: "America/New_York"
+			//go to " http://momentjs.com/timezone/ " to get timezone
+		});
+	</script>
+<!--===============================================================================================-->
+	<script src="{{ url_for('static', filename='vendor/tilt/tilt.jquery.min.js') }}"></script>
+	<script >
+		$('.js-tilt').tilt({
+			scale: 1.1
+		})
+	</script>
+	<script src="{{ url_for('static', filename='js_comingsoon/videoBackground.js') }}"></script>
+<!--===============================================================================================-->
+	<script src="{{ url_for('static', filename='js_comingsoon/main.js') }}"></script>
+
+</body>
+</html>

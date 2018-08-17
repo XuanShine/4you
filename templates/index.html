@@ -1,0 +1,916 @@
+{% macro create_modal_start(id_modal, title, large='') %}
+<div class="modal fade" id="{{ id_modal }}" tabindex="-1" role="dialog" aria-labelledby="4you_prestation" aria-hidden="true">
+    <div class="modal-dialog {% if large %}modal-lg{% endif %}" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel" style='display: none'>{{ title }}</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <section class="PricingTable text-xs-center">
+            <div class="container-fluid">
+              <div class="row">
+{% endmacro %}
+{% macro create_modal_end() %}
+              </div>
+            </div>
+          </section>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endmacro %}
+{% macro modal_table_price(col_lg, col_sm, pro, title, price) %}
+<div class="col-lg-{{ col_lg }} col-sm-{{ col_sm }}">
+  <div class="table {% if pro %}professional{% endif %}">
+    <div class="head">
+      <span>{{ title }}</span>
+      <h3>€ {{ price }}</h3>
+    </div>
+    <ul class="list-unstyled">
+      {% for element in varargs %}
+      <li>{{ element }}</li>
+      {% endfor %}
+      <li><br></li>
+    </ul>
+    <!-- TODO?: Faire une action lors du clic sur choisir -->
+    <!-- <a href="">Choisir</a> -->
+  </div>
+</div>
+{% endmacro %}
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <!-- ========== Meta Tags ========== -->
+  <meta name="keywords" content="lion, Bootstrap, Landing page, Template, Business ">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <!-- ========== Title ========== -->
+  <title>4you4ever</title>
+  <!-- ========== Favicon Ico ========== -->
+  <link rel="icon" href="{{ url_for('static', filename='images/favicon.png') }}" type="image/x-icon">
+  <!--favicon is 16*16-->
+  <!-- ========== STYLESHEETS ========== -->
+  <!-- google font Raleway-->
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+  <!-- Bootstrap v4.0.0-alpha.5-->
+  <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"> -->
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+  <!-- Bootstrap   Ionicons v2.0.0-->
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/ionicons.min.css') }}">
+  <!-- Animate.css v3.4.0-->
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/animate.min.css') }}">
+  <!-- magnific-popup v3.4.0-->
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/magnific-popup.css') }}">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css">
+  <!-- main style-->
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+  <!-- Load JS
+    HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries    WARNING: Respond.js doesn't work if you view the page via file://    =====================================-->
+  <!--[if lt IE 9] -->
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <!--[endif]-->
+</head>
+
+<body id="home">
+  <div class="reseau_social hidden-xs-up">
+    <!-- DONE 8/8/18: logo réseaux sociaux: en haut à droite fixed (à adapter lors du haut de page) -->
+    <a href="http://facebook.com">
+      <i class="fab fa-facebook fa-2x"></i>
+    </a>&nbsp;
+    <a href="http://youtube.com">
+      <i class="fab fa-youtube fa-2x"></i>
+    </a>
+  </div>
+
+
+  <!--start header-->
+    <!-- DONE 7/8/18: Remonter le tout -->
+    <!-- DONE 7/8/18: Mettre le menu sur "l'intro" sans arrière plan -->
+    <!-- FIXME: arrière plan sur mobile -->
+    <!-- FIXME: arrière plan sur desktop -->
+    <!-- DONE 10/8/18: Vidéo test -->
+  <section id="about" class="main-header text-xs-center ">
+    <video poster="{{ url_for('static', filename='images/logo.png') }}" autoplay muted>
+      <source src="{{ url_for('static', filename='videos/logo.webm') }}" type="video/webm">
+      <source src="{{ url_for('static', filename='videos/logo.ogv') }}" type="video/ogg">
+      <source src="{{ url_for('static', filename='videos/logo.mp4') }}" type="video/mp4">
+    </video>
+    <div class="overlay">
+              <!--start navbar-->
+  <nav class="navbar navbar-light">
+      <div class="container">
+        <button class="navbar-toggler hidden-lg-up" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+          aria-controls="navbarResponsive" aria-label="Toggle navigation">
+        </button>
+        <img class="navbar-brand" src="{{ url_for('static', filename='images/logo.png') }}" alt="">
+        <div class="collapse navbar-toggleable-md" id="navbarResponsive">
+          <ul class="nav navbar-nav float-lg-right">
+            <li class="nav-item active">
+              <a class="nav-link" data-value="home">ACCUEIL</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-value="work">Galeries
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-value="prestation">Nos Tarifs</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-value="contact">contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!--end navbar-->
+      <div class="container">
+        
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="body-header">
+              <p class="wow fadeInDown" data-wow-delay=".4s">agence de communication &amp; d'événementiel</p>
+              <h1 class="wow fadeInUp" data-wow-delay="1s">FOR YOU FOR EVER</h1>
+              <span class="wow fadeInUp" data-wow-delay="1.5s">Contactez nous !
+              </span>
+              <div class="btn-group">
+                <a class="btn wow fadeInLeft" data-wow-delay="2s">
+                  06 59 06 31 99</a>
+                <a href='mailto:ismael.fr@hotmail.fr' class="btn  wow fadeInRight" data-wow-delay="2.5s">
+                  ismael.fr@hotmail.fr </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--end header-->
+
+  <!--start features-->
+  <!-- DONE 06/08/2018: Recentrer le tout: décaler un peu vers la droite -->
+  <!-- <section id="services" class="features padding-100 text-xs-center">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="title wow fadeInDown" data-wow-delay=".4s">
+            <h2 class="h1">nos champs d'action ...</h2>
+            <div class="hex">
+              <span>⬢</span>
+            </div>
+            <p>NOUS PROPOSONs TOUTE SORTE DE VIDEOS EN FONCTION DE VOS BESOINS</p>
+          </div>
+        </div>
+      </div>
+      <div class="featuresBody">
+        <div class="row">
+          <div class="offset-lg-1 col-lg-4 col-sm-6">
+            <div class="singleFeature wow fadeIn" data-wow-delay=".6s">
+              <div class="media">
+                <div class="media-left">
+                  <div class="icons"><img src="{{ url_for('static', filename='3logo/mariage.png') }}" alt="mariage"></div>
+                </div>
+                <div class="media-body">
+                  <strong>new Life</strong>
+                  <p>Mariage et naissance</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-sm-6">
+            <div class="singleFeature wow fadeIn" data-wow-delay=".8s">
+              <div class="media">
+                <div class="media-left">
+                  <div class="icons"><img src="{{ url_for('static', filename='3logo/clip.png') }}" alt="clip"></div>
+                </div>
+                <div class="media-body">
+                  <strong>onklac</strong>
+                  <p>Clip musicaux et promotion artistiques</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-sm-6">
+            <div class="singleFeature wow fadeIn" data-wow-delay="1.4s">
+              <div class="media">
+                <div class="media-left">
+                  <div class="icons"><img src="{{ url_for('static', filename='3logo/video.jpg') }}" alt="video"></div>
+                </div>
+                <div class="media-body">
+                  <strong>hypnotic film</strong>
+                  <p>video institutionnelle</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-sm-6">
+              <div class="singleFeature wow fadeIn" data-wow-delay="1.6s">
+                <div class="media">
+                  <div class="media-body"> <strong></strong><br>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </section> -->
+  <!--end features-->
+  <!--start our-work -->
+  <!-- TODO: Espace VIP: entrer un code pour faire afficher des images -->
+  <!-- TODO: modal image -->
+  <!-- <section id="work" class="portfolio text-xs-center">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="title">
+            <h2 class="h1">EN IMAGE</h2>
+            <div class="hex">
+              <span>⬢</span>
+            </div>
+            <p></p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="portfolio-filter">
+            <ul class="list-unstyled shuffle">
+              <li class="filter transition selected" data-filter="*">All</li>
+              <li class="filter transition" data-filter=".mariage">WEDDINGS</li>
+              <li class="filter transition" data-filter=".event">EVENT</li>
+              <li class="filter transition" data-filter=".clip">CLIP</li>
+              <li class="filter transition" data-filter=".business">COMMERCIAL</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="grid">
+      <div class="portfolio-items portfolio-popup">
+        {% for element in images_portfolios %}
+        {% if loop.index0 > 6 %}
+        {% else %}
+        <div class="portfolio-item mix {{ element['category'] }}">
+          <div class="portfolio-image">
+            <img src="{{ element['url'] }}" alt="{{ element['category'] }}">
+            {# <div class="img-overlay">
+              <div class="animation">
+                <a href="{{ url_for('static', filename='images/Portfolios/1.png') }}" class="img-link" data-effect="fadeIn">
+                </a>
+                <h5 class="title">Project Title</h5>
+                <p class="portfolio-text">This is a wider.</p>
+                <small class="text-muted"> 90 Liks </small>
+              </div>
+            </div> #}
+          </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </section> -->
+  <!--end our-work-->
+  <!--start factCounter-->
+  <!-- <section id="facts" class="factCounter">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3 col-sm-6">
+          <div class="fact">
+            <div class="media-list">
+              <div class="media">
+                <a class="media-left" href="#"> </a>
+                <div class="media-body">
+                  <h4 class="media-heading counter">245890</h4>
+                  <p>Wordwide Customers</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+          <div class="fact">
+            <div class="media-list">
+              <div class="media">
+                <a class="media-left" href="#"> </a>
+                <div class="media-body">
+                  <h4 class="media-heading counter">156780</h4>
+                  <p>Domains Registered</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-6 ">
+          <div class="fact">
+            <div class="media-list">
+              <div class="media">
+                <a class="media-left" href="#"> </a>
+                <div class="media-body">
+                  <h4 class="media-heading">24
+                    <span>✖</span> 7</h4>
+                  <p>Online Support</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+          <div class="fact">
+            <div class="media-list">
+              <div class="media">
+                <a class="media-left" href="#"> </a>
+                <div class="media-body">
+                  <h4 class="media-heading  counter">120</h4>
+                  <p>Professional Staff</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section> -->
+  <!--end  factCounter-->
+  <!--start video-->
+  <!-- <section class="video text-xs-center">
+    <div class="video-link">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="embed-responsive embed-responsive-4by3">
+            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/hpeYWdkUtcE" allowfullscreen=""></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="details-video">
+      <div class="overlay">
+        <div class="container">
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="details">
+                <span>Get Start Now</span>
+                <h3>Watch This Video To Know</h3>
+                <h4>How We Work</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section> -->
+  <!--end video-->
+  <!--start Team-->
+  <section id='prestation' class="perfectTeam padding-100 text-xs-center">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="title wow fadeInDown" data-wow-delay=".4s">
+              <h2 class="h1">Nos Tarifs</h2>
+              <div class="hex"> <span>⬢</span> </div>
+              <p></p>
+            </div>
+          </div>
+        </div>
+        <!-- TODO: ouvrir tarifs -->
+        <!-- TODO: il y en a 4 -->
+        <div class="row">
+          <div class="col-lg-3 col-sm-6 wow zoomIn" data-wow-delay=".6s">
+            <div class="team-member">
+              <img src="{{ url_for('static', filename='images/prestations/mariage.jpg') }}" alt="">
+              <a data-toggle="modal" data-target="#modal_mariage">
+                <div class="overlay">
+                  <div class="team-details">
+                    <h6>Mariage</h6>
+                    <p>Figez vos plus beaux moments</p>
+                    
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="col-lg-3 col-sm-6  wow zoomIn" data-wow-delay=".8s">
+            <div class="team-member">
+              <img src="{{ url_for('static', filename='images/prestations/clip.jpg') }}" alt="">
+              <a data-toggle="modal" data-target="#modal_clip">
+                <div class="overlay">
+                  <div class="team-details">
+                    <h6>Clip</h6>
+                    <p>Des vidéos de très hautes qualités</p>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="col-lg-3 col-sm-6  wow zoomIn" data-wow-delay="1s">
+            <div class="team-member">
+              <img src="{{ url_for('static', filename='images/prestations/event.jpg') }}" alt="">
+              <a data-toggle="modal" data-target="#modal_event">
+                <div class="overlay">
+                  <div class="team-details">
+                    <h6>Événementiel</h6>
+                    <p>Présent au coeur les moments forts</p>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="col-lg-3 col-sm-6  wow zoomIn" data-wow-delay="1.2s">
+              <div class="team-member">
+                <img src="{{ url_for('static', filename='images/prestations/business.jpg') }}" alt="">
+                <a data-toggle="modal" data-target="#modal_business">
+                  <div class="overlay">
+                    <div class="team-details">
+                      <h6>Commercial</h6>
+                      <p>Votre business en image</p>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>
+        </div>
+      </div>
+    </section>
+  <!--end Team-->
+  <!--start Pricing table-->
+  <!-- DONE 10/8/18: Ouvrir la 2ème fenêtre -->
+  <!-- <section class="PricingTable text-xs-center">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="title">
+            <h2 class="h1">nos tarifs</h2>
+            <div class="hex">
+              <span>⬢</span>
+            </div>
+            <p>afin de mieux répondre aux demandes de nos futurs mariés nous leur proposont le choix entre 4 formules</p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <p>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+              Launch demo modal
+          </button>
+        </p>
+      </div>
+    </div>
+  </section> -->
+  <!--end Pricing table-->
+  <!-- Modal -->
+  {{ create_modal_start('modal_mariage', 'mariage', large='true') }}
+  {{ modal_table_price(3, 6, "", "STANDART", 900, '300 Photos - 50 retouchées', 'teaser PRO', 'wee transfer', '4 semaines', '*', '*', '*') }}
+  {{ modal_table_price(3, 6, "", "SILVER", 1300, '500 Photos - 70 retouchées', 'teaser PRO + montage 15 min', 'wee transfer + album photo', '3 semaines', 'images drone', '*', '*') }}
+  {{ modal_table_price(3, 6, "pro", "GOLD", 1700, '700 Photos - 100 retouchées', 'teaser PRO + montage 30 min', 'clé USB + album photo', '2 semaines', 'images drone', 'projection vidéo "cinémotion"', '*') }}
+  {{ modal_table_price(3, 6, "", "PLATINIUM", 2800, '1000 Photos - 500 retouchées', 'teaser PRO + montage 1H', 'coffret', '1 semaine', 'images drone', 'projection vidéo "cinémotion"', 'photo boot') }}
+  {{ create_modal_end() }}
+
+  {{ create_modal_start('modal_clip', 'clip') }}
+  {{ modal_table_price(6, 6, "", "WHITE", 300, 'Clip Full HD', 'Image Drone Conditionné', 'Tournage restreint', '10 jours', '*', '*', '*') }}
+  {{ modal_table_price(6, 6, "pro", "BLACK", 500, 'Clip 4K', 'Image Drone', 'Tournage Étendue', '4 jours', 'Teaser', 'Photo Single', 'Pré-Visionnage') }}
+  {{ create_modal_end() }}
+
+  {{ create_modal_start('modal_event', 'evenement') }}
+  {{ modal_table_price(6, 6, "", "ESSENTIEL", 400, 'Vidéo 4K', 'Wee Transfert', 'Image Drone Conditionné', 'Tournage Restreint', '2 Semaines', '*', '*') }}
+  {{ modal_table_price(6, 6, "pro", "PRESTIGE", 800, 'Vidéo 4K + Photos', 'Clé USB', 'Image Drone', 'Tournage Étendue', '1 Semaines', 'Option Slider & Grue', 'Pré-Visionnage') }}
+  {{ create_modal_end() }}
+
+  {{ create_modal_start('modal_business', 'business') }}
+  {{ modal_table_price(6, 6, "", "MODESTE", 200, 'Vidéo 4K', 'Wee Transfert', 'Image Drone Conditionné', 'Option Slider & Trépied', 'Tournage Restreint', '2 semaines', '*') }}
+  {{ modal_table_price(6, 6, "pro", "LUXE", 400, 'Vidéo 4K + Photos', 'Clé USB', 'Image Drone', 'Option Slider & Trépied', 'Tournage Étendue', '2 semaines', 'Pré-Visionnage') }}
+  {{ create_modal_end() }}
+  <!-- End Modal -->
+  
+
+  <!--start testimonials & clients-->
+  <!-- <section class="testimonials padding-100 text-xs-center">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="title">
+              <div class="hex"> <span>⬢</span> </div>
+              <p>ONKLAC&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                Hypnotic film</p>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="testimonial">
+              <div class="testimonial-text pink">
+                <p>CLIP EN 4K</p>
+                <p>CLIP EN 4 JOURS</p>
+              </div>
+              <div class="testimonial-persone"> <img src="assets/images/testimonials/1.png"
+                  alt="">
+                <span>€ 400&nbsp;</span> <strong>LE CLIP</strong> </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="testimonial">
+              <div class="testimonial-text orang">
+                <p>PUBLICITE</p>© 2015 Qamar Studio LLC. Trademarks and brands are the property of their respective owners. Address: Business road 123, Ashborton Grove, Emirates, London 12345 All rights reserved. 
+              </div>
+              <div class="testim© 2015 Qamar Studio LLC. Trademarks and brands are the property of their respective owners. Address: Business road 123, Ashborton Grove, Emirates, London 12345 All rights reserved. ersone"> <img src="assets/images/testimonials/2.png"
+                  alt="">
+                <span>€ 300</span> <strong>LE TEASER</strong></div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-2 col-sm-6">
+            <div class="client"> <img src="assets/images/Client/1.png" alt="">
+            </div>
+          </div>
+          <div class="col-md-2 col-sm-6">
+            <div class="client"> <img src="assets/images/Client/2.png" alt="">
+            </div>
+          </div>
+          <div class="col-md-2 col-sm-6">
+            <div class="client"> <img src="assets/images/Client/3.png" alt="">
+            </div>
+          </div>
+          <div class="col-md-2 col-sm-6">
+            <div class="client"> <img src="assets/images/Client/4.png" alt="">
+            </div>
+          </div>
+          <div class="col-md-2 col-sm-6">
+            <div class="client"> <img src="assets/images/Client/5.png" alt="">
+            </div>
+          </div>
+          <div class="col-md-2 col-sm-6">
+            <div class="client"> <img src="assets/images/Client/6.png" alt="">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section> -->
+  <!--end testimonials  & clients-->
+  <!--start procces-->
+  <!-- <section class="procces text-xs-center">
+      <div class="container padding-100">
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="title">
+              <h2 class="h1">a supprimer</h2>
+              <div class="hex"> <span>⬢</span> </div>
+              <p> perspiciatis unde omnis iste natus error sit voluptatem
+                accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
+                quae ab illo inventore veritatis et quasi architecto beatae
+                vitae dicta </p>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-3 col-sm-6">
+            <div class="single-procces">
+              <div class="icon-procces"> </div>
+              <strong>Planning</strong>
+              <p> Lorem ipsum dolor sit amet consectetur adipiscing elit sed do
+                eiusmod tempor incididunt. </p>
+            </div>
+          </div>
+          <div class="col-lg-3 col-sm-6">
+            <div class="single-procces">
+              <div class="icon-procces"> </div>
+              <strong>designing</strong>
+              <p> Lorem ipsum dolor sit amet consectetur adipiscing elit sed do
+                eiusmod tempor incididunt. </p>
+            </div>
+          </div>
+          <div class="col-lg-3 col-sm-6">
+            <div class="single-procces">
+              <div class="icon-procces"> </div>
+              <strong>development</strong>
+              <p> Lorem ipsum dolor sit amet consectetur adipiscing elit sed do
+                eiusmod tempor incididunt. </p>
+            </div>
+          </div>
+          <div class="col-lg-3 col-sm-6">
+            <div class="single-procces">
+              <div class="icon-procces"> </div>
+              <strong>done</strong>
+              <p> Lorem ipsum dolor sit amet consectetur adipiscing elit sed do
+                eiusmod tempor incididunt. </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section> -->
+  <!--end procces-->
+  <!--start services-->
+  <!-- <section class="services padding-100 text-xs-center">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="title wow fadeInDown" data-wow-delay=".4s">
+              <h2 class="h1">a supprimer</h2>
+              <div class="hex"> <span>⬢</span> </div>
+              <p> perspiciatis unde omnis iste natus error sit voluptatem
+                accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
+                quae ab illo inventore veritatis et quasi architecto beatae
+                vitae dicta </p>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-3 col-sm-6">
+            <div class="single-service wow bounceIn" data-wow-delay=".6s">
+              <div class="icon-service"> </div>
+              <strong>Landing page design</strong>
+              <hr>
+              <p> Lorem ipsum dolor sit amet consectetur adipiscing elit sed do
+                eiusmod tempor incididunt. </p>
+            </div>
+          </div>
+          <div class="col-lg-3 col-sm-6">
+            <div class="single-service  wow bounceIn" data-wow-delay=".8s">
+              <div class="icon-service"> </div>
+              <strong>Wordpress design</strong>
+              <hr>
+              <p> Lorem ipsum dolor sit amet consectetur adipiscing elit sed do
+                eiusmod tempor incididunt. </p>
+            </div>
+          </div>
+          <div class="col-lg-3 col-sm-6">
+            <div class="single-service  wow bounceIn" data-wow-delay="1s">
+              <div class="icon-service"> </div>
+              <strong>Joomla Design</strong>
+              <hr>
+              <p> Lorem ipsum dolor sit amet consectetur adipiscing elit sed do
+                eiusmod tempor incididunt. </p>
+            </div>
+          </div>
+          <div class="col-lg-3 col-sm-6">
+            <div class="single-service  wow bounceIn" data-wow-delay="1.2s">
+              <div class="icon-service"> </div>
+              <strong>Magento Design</strong>
+              <hr>
+              <p> Lorem ipsum dolor sit amet consectetur adipiscing elit sed do
+                eiusmod tempor incididunt. </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section> -->
+  <!--end services-->
+  <!--start progress-->
+  <section class="progressCircle text-xs-center">
+    <div class="overlay">
+      <div class="container">
+        <div class="prog">
+          <div class="row">
+            <div class="col-md-2 col-sm-6 offset-md-1"> </div>
+            <div class="col-md-2 col-sm-6"> </div>
+            <div class="col-md-2 col-sm-6"> </div>
+            <div class="col-md-2 col-sm-6"> </div>
+            <div class="col-md-2 col-sm-6"> </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--end progress-->
+  <!--start news-->
+  <section id="blog" class="news padding-100">
+    <div class="container">
+      <div class="row text-xs-center">
+        <div class="col-xs-12">
+          <div class="title">
+            <h2 class="h1">notre politique</h2>
+            <!-- TODO: Enlever la barre noir ou juste enlever le texte -->
+            <div class="hex">
+              <span>⬢</span>
+            </div>
+            <p>Trois principes régissent nos valeurs</p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="single-news">
+            <div class="card">
+              <img class="card-img-top" src="{{ url_for('static', filename='images/politique/handshake.jpg') }}" alt="">
+              <div class="attribute">
+                <!-- <span> 10-12-2016</span>
+                <span> 200</span>
+                <span> 1.789</span> -->
+              </div>
+              <div class="card-block">
+                <h5 class="card-title">Disponibilité </h5>
+                <p>Nous nous déplaçons à votre lieu de domicile pour les premiers rendez vous.</p>
+                <!-- <a href="#" class="btn"></a> -->
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="single-news">
+            <div class="card">
+              <img class="card-img-top" src="{{ url_for('static', filename='images/politique/money.jpg') }}" alt="">
+              <div class="attribute">
+                <!-- <span> 10-12-2016</span>
+                <span> 200</span>
+                <span> 1.789</span> -->
+              </div>
+              <div class="card-block">
+                <h5 class="card-title">Adaptabilité</h5>
+                <p>Nous nous efforcons de repondre à toute demande quelque soit le budget.</p>
+                <!-- <a href="#" class="btn"></a> -->
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="single-news">
+            <div class="card">
+              <img class="card-img-top" src="{{ url_for('static', filename='images/politique/cadenas.jpg') }}" alt="">
+              <div class="attribute">
+                <!-- <span> 10-12-2016</span>
+                <span> 200</span>
+                <span> 1.789</span> -->
+              </div>
+              <div class="card-block">
+                <h5 class="card-title">Confidentialité</h5>
+                <p>Nous ne publions sur les réseaux sociaux que les artistes que nous produisons.</p>
+                <!-- <a href="#" class="btn"></a> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--end news-->
+  <!--start map-->
+  <!-- <section class="map">
+      <div class="map-responsive"> <iframe src="https://www.google.com/maps/embed?pb=%211m18%211m12%211m3%211d110502.76983778014%212d31.188252278608605%213d30.05946979947631%212m3%211f0%212f0%213f0%213m2%211i1024%212i768%214f13.1%213m3%211m2%211s0x14583fa60b21beeb%3A0x79dfb296e8423bba%212sCairo%2C+Cairo+Governorate%215e0%213m2%211sen%212seg%214v1482578583014"
+          style="border:0"
+          allowfullscreen=""></iframe>
+      </div>
+    </section> -->
+  <!-- end map -->
+  <!-- DONE 06/08/2018: enlever l'espace -->
+  <!-- <section id="contact" class="contactUs padding-100 text-xs-center"> -->
+  <section id="contact" class="contactUs text-xs-center">
+    <form action="{{ url_for('contact') }}" method="POST">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="title">
+              <h2 class="h1">contact</h2>
+              <div class="hex">
+                <span>⬢</span>
+              </div>
+              <p>pour toute demande de renseignements (Devis personnalisé, dépliant ...) n'hesitez pas à nous contacter</p>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <!-- <div class="col-lg-3 col-md-6">
+              <div class="detalis">
+                <h5><br>
+                </h5>
+              </div>
+            </div> -->
+          <!-- DONE 06/08/2018: pas important: coller un peu plus/ ou mettre l'un au dessus de l'autre -->
+          <div class="offset-lg-4 col-lg-2 col-md-6">
+            <div class="detalis">
+              <h5>Secrétaire</h5>
+              <p>06 15 83 35 13</p>
+            </div>
+          </div>
+          <div class="col-lg-2 col-md-6">
+            <div class="detalis">
+              <h5>Réalisateur</h5>
+              <p>06 59 06 31 99</p>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-4 col-md-6">
+            <div class="form">
+              <input class="form-control" placeholder="Nom" type="text" name='name'>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="form">
+              <input class="form-control" placeholder="Adresse Mail" type="text" name='email'>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="form">
+              <input class="form-control" placeholder="Téléphone" type="text" name='phone'>
+            </div>
+          </div>
+          <!-- <div class="col-lg-3 col-md-6">
+              <div class="form"> <input class="form-control" placeholder="Answer:8+9 ?"
+                  type="text">
+              </div>
+            </div> -->
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form">
+              <textarea class="form-control" placeholder="Message" name='message'></textarea>
+            </div>
+            <input type='submit' value='Envoyer' class="btn">
+          </div>
+        </div>
+      </div>
+    </form>
+  </section>
+  <!--end contac-us-->
+  <!-- start Partenariat -->
+  <section>
+      <div class="container">
+          <div class="row text-xs-center">
+            <div class="col-xs-12">
+              <div class="title">
+                <h2 class="h1">Nos Partenaires</h2>
+                <div class="hex">
+                  <span>⬢</span>
+                </div>
+                {% for logo in logo_partenaires %}
+                <img src="{{ logo }}" width=100>
+                {% endfor %}
+              </div>
+          </div>
+      </div>
+    </div>
+  </section>
+  <!-- end Partenariat -->
+  <!--start footer-->
+  <section class="footerCopy text-xs-center">
+    <div class="container">
+      <div class="footer">
+        <!-- <ul class="list-unstyled">
+          <li>
+            <a href="">Home</a>
+          </li>
+        </ul> -->
+      </div>
+      <p class="copyright">
+        <span> © 2018 4YOU Trademarks and brands are the property of their respective owners. </span>
+      </p>
+      <!-- TODO: logo partenaires sur fond blanc (à déterminer) -->
+    </div>
+  </section>
+  <!--end footer-->
+  <!--start last footer-->
+  <section class="lastFooter text-xs-center">
+    <div class="container">
+      <h5>-For YOU FOREVER-</h5>
+    </div>
+  </section>
+  <!--end last footer-->
+  <!--start button top-->
+  <div id="scroll-top">
+    <i class="icon ion-arrow-up-c"></i>
+  </div>
+  <!--end button top-->
+  <!--loading page-->
+  <!--<section class="loading-page">
+      <div class="loader-inner ball-pulse"> </div>    </section>-->
+  <!--loading page-->
+  <!-- ========== Javascript ========== -->
+  <!-- jquery v2.1.4-->
+  <script type="text/javascript" src="{{ url_for('static',  filename='js/jquery.2.1.4.min.js') }}"></script>
+  <!-- Bootstrap v4.0.0-alpha.5-->
+  <script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
+  <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script> -->
+  <script type="text/javascript" src="{{ url_for('static',  filename='js/bootstrap.min.js') }}"></script>
+  <!-- counterup  1.0-->
+  <script type="text/javascript" src="{{ url_for('static',  filename='js/waypoints.min.js') }}"></script>
+  <!--jQuery Waypoints - v2.0.3-->
+  <script type="text/javascript" src="{{ url_for('static',  filename='js/jquery.counterup.min.js') }}"></script>
+  <!-- wow v1.1.2-->
+  <script type="text/javascript" src="{{ url_for('static',  filename='js/wow.min.js') }}"></script>
+  <!-- Magnific Popup - v1.0.1-->
+  <script type="text/javascript" src="{{ url_for('static',  filename='js/jquery.magnific-popup.min.js') }}"></script>
+  <!-- MixItUp v2.1.5-->
+  <script type="text/javascript" src="{{ url_for('static',  filename='js/jquery.mixitup.js') }}"></script>
+  <!-- circliful-->
+  <script type="text/javascript" src="{{ url_for('static',  filename='js/jquery.circliful.js') }}"></script>
+  <!-- main js-->
+  <script type="text/javascript" src="{{ url_for('static',  filename='js/custom.js') }}"></script>
+  <!-- VideoBackground -->
+  <script src="{{ url_for('static',  filename='js/videoBackground.min.js') }}"></script>
+  <!-- main js -->
+  <script type="text/javascript" src="{{ url_for('static',  filename='js/myscript.js') }}"></script>
+
+</body>
+
+</html>

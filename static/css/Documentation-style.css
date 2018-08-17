@@ -1,0 +1,254 @@
+* {
+    -webkit-transition: all .4s ease-in-out 0s;
+    -moz-transition: all .4s ease-in-out 0s;
+    -o-transition: all .4s ease-in-out 0s;
+    transition: all 0.4s ease-in-out 0s;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+body {
+    overflow-y: hidden;
+}
+h1,h2,h3,h4,h5,strong{
+    font-family: Raleway
+}
+p{
+    font-family: sans-serif
+}
+/*  ----------------------------------------------------
+documention
+-------------------------------------------------------- */
+.home_intro_inner {
+    background: rgba(0, 0, 0, 0.63);
+    padding: 100px 0
+}
+
+.home_intro_inner h1 {
+    font-family: Raleway;
+    color: #fff
+}
+
+.page_sides {
+    background-color: #f9f9f9;
+}
+
+.section_box, .side_content {
+    background-color: #FFFFFF;
+    margin: 30px auto;
+    box-shadow: 0 0 5px 1px #eeeeee;
+}
+
+.side_content {
+    width: 300px;
+    height: 100%;
+    position: fixed;
+    margin: 0;
+    top: 0;
+    left: 0;
+    padding-left: 20px;
+    
+}
+.side_content h3{
+    color:#290161;
+    text-align: center;
+    padding: 20px 0;
+    font-weight: bold
+}
+.side_content h3 span{
+    color: #6200ea
+}
+.side_content >ul >li {
+    position: relative;
+    display: block;
+    padding: 16px;
+    border-bottom: solid 1px #eee;
+    font-size: 14px;
+    text-transform: capitalize;
+    color: #333;
+    cursor: pointer;
+}
+
+.side_content li.active, .side_content li:hover {
+    background: #6200ea;
+    color: #fff;
+}
+.side_content li.active.customization, .side_content li.customization{
+    background: none;
+    color: #333
+}
+.side_content li.customization ul{
+    padding: 0
+}
+.side_content li.customization li{
+    padding: 2px 10px
+}
+.side_content li.customization ul li:hover,
+.side_content li.customization ul li.active{
+    padding-left: 20px
+}
+.section_header {
+    border-bottom: solid 1px #eee;
+    padding: 7px 15px;
+}
+
+.section_header i {
+    font-size: 25px;
+    float: left;
+    color: #777;
+}
+
+.section_header h3 {
+    margin: 0;
+    padding: 0;
+    line-height: 1.9;
+    color: #333;
+    font-size: 20px;
+    text-transform: capitalize;
+    margin-left: 40px;
+}
+
+.section_body {
+    padding: 15px 30px;
+}
+
+.section_body h5 {
+    font-weight: bold;
+    font-size: 16px
+}
+
+.section_body p {
+    font-size: 14px;
+    color: #999
+}
+
+.section_body ul {
+    padding: 0 20px
+}
+
+.section_box .section_header p {
+    font-size: 14px;
+    color: #777
+}
+
+.section_body .icons_html_markup code {
+    padding: 0;
+    font-size: 15px;
+    color: #000;
+    background: none;
+    border-radius: 0;
+    margin: -1px;
+    font-family: "Courier New", Courier, monospace
+}
+
+.section_box .section_body .prettyprint {
+    -webkit-box-shadow: inset 40px 0 0 #fbfbfc, inset 41px 0 0 #ececf0;
+    -moz-box-shadow: inset 40px 0 0 #fbfbfc, inset 41px 0 0 #ececf0;
+    box-shadow: inset 40px 0 0 #fbfbfc, inset 41px 0 0 #ececf0;
+    padding: 8px 50px;
+    background-color: #f7f7f9;
+    border: 1px solid #e1e1e8;
+
+}
+
+.section_box .section_body ol.linenums {
+    margin: 0 0 0 33px;
+}
+
+.section_box .section_body ol li {
+    list-style: decimal;
+    margin-left: 36px;
+    padding-left: 12px;
+    color: #bebec5;
+    line-height: 18px;
+    text-shadow: 0 1px 0 #fff;
+}
+
+/********************************/
+/*      loading-page */
+/********************************/
+.loading-page {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    text-align: center;
+    background-color: #FFF;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+.loading-page .loader-inner {
+    margin: 400px auto;
+    width: 200px;
+    text-align: center;
+}
+
+.loading-page .ball-pulse > div:nth-child(1) {
+    margin-left: -31px;
+    -webkit-animation-delay: -0.32s;
+    animation-delay: -0.32s;
+}
+
+.loading-page .ball-pulse > div:nth-child(2) {
+    margin-left: -9px;
+    -webkit-animation-delay: -0.16s;
+    animation-delay: -0.16s;
+}
+
+.loading-page .ball-pulse > div {
+    background-color: #6200ea;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -9px;
+    margin-left: 13px;
+    width: 18px;
+    height: 18px;
+    border-radius: 100%;
+    display: inline-block;
+    -webkit-animation: bouncedelay 1.4s infinite ease-in-out;
+    animation: bouncedelay 1.4s infinite ease-in-out;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+/*animation loading page*/
+@-webkit-keyframes bouncedelay {
+    0%, 80%, 100% {
+        -webkit-transform: scale(0);
+    }
+    40% {
+        -webkit-transform: scale(1);
+    }
+}
+
+@keyframes bouncedelay {
+    0%, 80%, 100% {
+        transform: scale(0);
+        -webkit-transform: scale(0);
+    }
+    40% {
+        transform: scale(1);
+        -webkit-transform: scale(1);
+    }
+}
+
+/*scroll top*/
+#scroll-top {
+    width: 60px;
+    height: 60px;
+    color: #6200ea;
+    opacity: .9;
+    position: fixed;
+    z-index: 3;
+    bottom: 10px;
+    right: 15px;
+    text-align: center;
+    font-size: 40px;
+    cursor: pointer;
+    display: none;
+}

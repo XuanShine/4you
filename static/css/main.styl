@@ -1,0 +1,95 @@
+// Navbar in 1st page
+.navbar
+    background: transparent
+    background-color: transparent
+    border-color: transparent
+    // background-image: -moz-linear-gradient(to top, rgba(0, 0, 1, 0.78) 0%, rgba(0, 0, 0, 0.41) 22%, rgba(0, 0, 0, 0.27) 100%, transparent 100%)
+.body-header
+    margin: 15% auto
+
+.navbar .navbar-brand
+    // TODO: sur portable, le décaler vers la droite
+    max-width: 8em
+    max-height: 8em
+    margin-top: -1em
+    margin-left: -4em
+
+.main-header
+    background: url("../bg_main/logo.png") fixed no-repeat center center
+    background-size: contain
+
+// Image portfolio non scale
+.portfolio .grid .portfolio-item .portfolio-image img
+    width: auto
+    position: absolute;
+    top:-100%; left:0; right: 0; bottom:-100%;
+    margin: auto
+
+// Tarifs affichés large
+@media (min-width: 992px) {
+  .modal-lg {
+    max-width: 90%
+  }
+}
+
+.perfectTeam
+    padding-bottom: 100px
+
+.perfectTeam .team-member .team-details p
+    width: 80%
+
+#services .icons img 
+    max-width: 73px
+    height: auto
+
+.reseau_social
+    position: fixed
+    top: 15px
+    right: 15px
+    z-index: 1500
+    i
+        color: white
+
+.progressCircle 
+    background: url("../portfolios/mariage.jpg") fixed no-repeat center center
+    background-size: cover
+
+.progressCircle .overlay
+    background: rgba(0, 0, 0, 0) !important;
+
+.news .single-news
+    cursor: unset
+
+.footerCopy
+    padding: 0
+
+//medium+ screen sizes
+@media (min-width:992px) {
+    .desktop-only {
+        display: inline-block !important;
+    }
+}
+ 
+//small screen sizes
+@media (max-width: 991px) {
+    .mobile-only {
+        display: inline-block !important;
+    }
+ 
+    .desktop-only {
+        display:none !important;
+    }
+}
+
+.nav-link
+    color: white !important
+
+.portfolio
+    // à enlever si on remet ce qu'il y avait entre..
+    margin-top: 0
+
+.modal
+    z-index: 5000
+
+#scroll-top
+    z-index: 2000
