@@ -17,6 +17,11 @@
     margin-left: 0em;
   }
 }
+@media only screen and (min-width: 1000px) {
+  .phone {
+    pointer-events: none;
+  }
+}
 .main-header {
   background: url("../main_bg.jpg") fixed no-repeat center center;
   background-size: cover;
