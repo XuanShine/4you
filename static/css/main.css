@@ -54,8 +54,11 @@
   right: 15px;
   z-index: 1500;
 }
-.reseau_social i {
+.reseau_social i.fa-facebook {
   color: #3b5998;
+}
+.reseau_social i.fa-youtube {
+  color: #f00;
 }
 .progressCircle {
   background: url("../mariage_flower.jpg") fixed no-repeat center center;
@@ -69,19 +72,6 @@
 }
 .footerCopy {
   padding: 0;
-}
-@media (min-width: 992px) {
-  .desktop-only {
-    display: inline-block !important;
-  }
-}
-@media (max-width: 991px) {
-  .mobile-only {
-    display: inline-block !important;
-  }
-  .desktop-only {
-    display: none !important;
-  }
 }
 .nav-link {
   color: #fff !important;
