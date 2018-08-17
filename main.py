@@ -66,7 +66,3 @@ def contact():
                         "text": f"Phone: {phone}\n{message}"})
 
     return redirect(url_for('index'))
-
-@app.route('/env')
-def env():
-    return os.environ.get('secret', 'Not working')
