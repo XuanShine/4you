@@ -17,6 +17,7 @@ BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 
 @app.route('/')
 @app.route('/index')
+@app.route('/mariage')
 def index():
     path_portfolios = os.path.join(BASE_DIR, 'static', 'portfolios')
     elements_in_portfolios = os.listdir(path_portfolios)
