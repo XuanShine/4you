@@ -1,6 +1,6 @@
 // Navbar in 1st page
 .navbar
-    background: transparent
+    background: transparent 
     background-color: transparent
     border-color: transparent
     // background-image: -moz-linear-gradient(to top, rgba(0, 0, 1, 0.78) 0%, rgba(0, 0, 0, 0.41) 22%, rgba(0, 0, 0, 0.27) 100%, transparent 100%)
@@ -8,15 +8,19 @@
     margin: 15% auto
 
 .navbar .navbar-brand
-    // TODO: sur portable, le décaler vers la droite
     max-width: 8em
     max-height: 8em
     margin-top: -1em
     margin-left: -4em
 
+@media only screen and (max-width: 700px)
+    .navbar .navbar-brand
+        margin-left: 0em
+
+
 .main-header
-    background: url("../bg_main/logo.png") fixed no-repeat center center
-    background-size: contain
+    background: url("../main_bg.png") fixed no-repeat center center
+    background-size: cover
 
 // Image portfolio non scale
 .portfolio .grid .portfolio-item .portfolio-image img
@@ -51,7 +55,7 @@
         color: white
 
 .progressCircle 
-    background: url("../portfolios/mariage.jpg") fixed no-repeat center center
+    background: url("../mariage_flower.jpg") fixed no-repeat center center
     background-size: cover
 
 .progressCircle .overlay

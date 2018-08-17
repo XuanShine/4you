@@ -103,41 +103,35 @@
     <!-- FIXME: arrière plan sur desktop -->
     <!-- DONE 10/8/18: Vidéo test -->
   <section id="about" class="main-header text-xs-center ">
-    <video poster="{{ url_for('static', filename='images/logo.png') }}" autoplay muted>
-      <source src="{{ url_for('static', filename='videos/logo.webm') }}" type="video/webm">
-      <source src="{{ url_for('static', filename='videos/logo.ogv') }}" type="video/ogg">
-      <source src="{{ url_for('static', filename='videos/logo.mp4') }}" type="video/mp4">
-    </video>
     <div class="overlay">
-              <!--start navbar-->
-  <nav class="navbar navbar-light">
-      <div class="container">
-        <button class="navbar-toggler hidden-lg-up" type="button" data-toggle="collapse" data-target="#navbarResponsive"
-          aria-controls="navbarResponsive" aria-label="Toggle navigation">
-        </button>
-        <img class="navbar-brand" src="{{ url_for('static', filename='images/logo.png') }}" alt="">
-        <div class="collapse navbar-toggleable-md" id="navbarResponsive">
-          <ul class="nav navbar-nav float-lg-right">
-            <li class="nav-item active">
-              <a class="nav-link" data-value="home">ACCUEIL</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" data-value="work">Galeries
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" data-value="prestation">Nos Tarifs</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" data-value="contact">contact</a>
-            </li>
-          </ul>
-        </div>
+      <!--start navbar-->
+<nav class="navbar navbar-light">
+    <div class="container">
+      <button class="navbar-toggler hidden-lg-up" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+        aria-controls="navbarResponsive" aria-label="Toggle navigation">
+      </button>
+      <img class="navbar-brand" src="{{ url_for('static', filename='images/logo.png') }}" alt="">
+      <div class="collapse navbar-toggleable-md" id="navbarResponsive">
+        <ul class="nav navbar-nav float-lg-right">
+          <li class="nav-item active">
+            <a class="nav-link" data-value="home">ACCUEIL</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-value="work">Galeries
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-value="prestation">Nos Tarifs</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-value="contact">Contact</a>
+          </li>
+        </ul>
       </div>
-    </nav>
-    <!--end navbar-->
+    </div>
+  </nav>
+  <!--end navbar-->
       <div class="container">
-        
         <div class="row">
           <div class="col-xs-12">
             <div class="body-header">
@@ -373,6 +367,9 @@
   </section> -->
   <!--end video-->
   <!--start Team-->
+  <!-- DONE: ouvrir tarifs -->
+  <!-- DONE: il y en a 4 -->
+  <!-- FIXME: ouverture des tarifs ne marche pas sur iphone -->
   <section id='prestation' class="perfectTeam padding-100 text-xs-center">
       <div class="container">
         <div class="row">
@@ -384,8 +381,6 @@
             </div>
           </div>
         </div>
-        <!-- TODO: ouvrir tarifs -->
-        <!-- TODO: il y en a 4 -->
         <div class="row">
           <div class="col-lg-3 col-sm-6 wow zoomIn" data-wow-delay=".6s">
             <div class="team-member">
@@ -684,13 +679,13 @@
   </section>
   <!--end progress-->
   <!--start news-->
+  <!-- DONE: Enlever la barre noir ou juste enlever le texte -->
   <section id="blog" class="news padding-100">
     <div class="container">
       <div class="row text-xs-center">
         <div class="col-xs-12">
           <div class="title">
             <h2 class="h1">notre politique</h2>
-            <!-- TODO: Enlever la barre noir ou juste enlever le texte -->
             <div class="hex">
               <span>⬢</span>
             </div>

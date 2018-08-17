@@ -1,0 +1,15 @@
+__pycache__/
+.pytest_cache/
+.vscode/
+venv/
+.pylintrc
+migrations/
+migrate.py
+.tox/
+PyPMS.egg-info/
+
+doc QAMAR/
+.sass-cache/
+media/
+
+.env
