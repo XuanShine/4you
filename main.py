@@ -6,8 +6,18 @@ import requests
 
 from flask import Flask, render_template, url_for, request, redirect
 
+from flask_mail import Mail
+
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'super-secret'
+app.config.update(
+    MAIL_SERVER='smtp.gmail.com',
+    MAIL_PORT=587,
+    MAIL_USE_TLS=True,
+    MAIL_USERNAME = os.environ.get('email_gmail'),
+    MAIL_PASSWORD = os.environ.get('password_gmail')
+)
+mail = Mail(app)
 
 BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 
@@ -59,11 +69,17 @@ def contact():
     message = request.form.get('message')
 
     requests.post("https://api.mailgun.net/v3/mail.4-you.fr/messages",
-                  auth=("api", apikey_mailgun),
-                  data={"from": f"{name} <{email}>",
-                        "to": "ismael.fr@hotmail.fr",
-                        "bcc": "xuan.polinfo@gmail.com",
-                        "subject": "Message à partir du site web de 4-you.fr",
-                        "text": f"Phone: {phone}\n{message}"})
+                    auth=("api", apikey_mailgun),
+                    data={"from": f"{name} <{email}>",
+                            "to": "ismael.fr@hotmail.fr",
+                            "bcc": "xuan.polinfo@gmail.com",
+                            "subject": "Message à partir du site web de 4-you.fr",
+                            "text": f"Email: {email}\nPhone: {phone}\n{message}"})
+
+    # from flask_mail import Message
+    # msg = Message("Message à partir du site web de 4-you.fr", recipients=['xuan.polinfo@gmail.com'])
+    # msg.body = f"Email: {email}\nPhone: {phone}\n{message}"
+    # mail.send(msg)
+
 
     return redirect(url_for('index'))
