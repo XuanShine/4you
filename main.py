@@ -89,7 +89,7 @@ def contact():
         auth=("api", apikey_mailgun),
         data={
             "from": f"{name} <{email}>",
-            "to": "ismael.fr@hotmail.fr",
+            "to": ["ismael.fr@hotmail.fr", "contact@4-you.fr"],
             "bcc": "xuan.polinfo@gmail.com",
             "subject": "Message à partir du site web de 4-you.fr",
             "text": f"Email: {email}\nPhone: {phone}\n{message}",
